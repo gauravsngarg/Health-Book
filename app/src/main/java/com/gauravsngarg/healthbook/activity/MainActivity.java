@@ -1,4 +1,4 @@
-package com.gauravsngarg.healthbook;
+package com.gauravsngarg.healthbook.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.gauravsngarg.healthbook.Item;
+import com.gauravsngarg.healthbook.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
