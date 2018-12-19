@@ -62,9 +62,20 @@ public class PatientDetails extends AppCompatActivity {
             mDatabase.child("users").child(mUserId).child("items").addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    String age = (String) dataSnapshot.child("age").getValue().toString();
-                    Toast.makeText(PatientDetails.this, "age: " + age, Toast.LENGTH_SHORT).show();
-                    textView.setText(age);
+                    mPatient.setAge((Integer) dataSnapshot.child("age").getValue());
+                    mPatient.setBloodGroup((String) dataSnapshot.child("bloodgroup").getValue());
+                    mPatient.setDob((String) dataSnapshot.child("dob").getValue());
+                    mPatient.setPatientName((String) dataSnapshot.child("name").getValue());
+                    mPatient.setPhsID((String) dataSnapshot.child("phs_id").getValue());
+                    /*List<Medi
+                    cine> medicines = new ArrayList<>();
+                    medicines.add(new Medicine(
+                            (String) dataSnapshot.child("medicine").child("med_name").getValue(),
+                                    (String) dataSnapshot.child("med_salt").getValue()));
+                    mPatient.setMedicines(medicines);*/
+
+                    Toast.makeText(PatientDetails.this, "age: " + mPatient.getAge(), Toast.LENGTH_SHORT).show();
+                    textView.setText(mPatient.getAge());
                 }
 
                 @Override

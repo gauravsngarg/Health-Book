@@ -6,6 +6,17 @@ public class Medicine {
     String mStartDate;
     String mEndDate;
 
+    public Medicine(){
+
+    }
+
+    public Medicine(String name, String salt) {
+        mName = name;
+        mSalt = salt;
+        mStartDate = "null";
+        mEndDate = "null";
+    }
+
     public String getName() {
         return mName;
     }
