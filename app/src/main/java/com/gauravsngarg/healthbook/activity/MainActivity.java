@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.gauravsngarg.healthbook.Item;
 import com.gauravsngarg.healthbook.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -66,11 +65,16 @@ public class MainActivity extends AppCompatActivity {
             final Button button = (Button) findViewById(R.id.addButton);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Item item = new Item(text.getText().toString());
+                    /*Item item = new Item(text.getText().toString());
                     String id = mDatabase.push().getKey();
                     Log.d(TAG, " database start");
                     mDatabase.child("users").child(mUserId).child("items").push().setValue(item);
-                    text.setText("");
+                    text.setText("");*/
+
+                    Intent intent = new Intent(MainActivity.this, PatientDetails.class);
+                    startActivity(intent);
+
+
                 }
             });
 
