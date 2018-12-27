@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/basic_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/app_left_margin"
+    android:layout_marginRight="@dimen/app_right_margin"
+    android:elevation="12dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/cover_image_gradient_drawable"/>
+
+        <ImageButton
+            android:layout_marginTop="110dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/img"/>
+
+        <TextView
+            android:id="@+id/patient_name"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="120dp"
+            android:textSize="32sp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:contentDescription="@string/patient_name"
+            android:text="Gaurav garg" />
+
+    </FrameLayout>
+</android.support.v7.widget.CardView>
