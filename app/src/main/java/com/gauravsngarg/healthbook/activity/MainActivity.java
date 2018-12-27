@@ -15,6 +15,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.gauravsngarg.healthbook.R;
+import com.gauravsngarg.healthbook.model.Item;
+import com.gauravsngarg.healthbook.model.Medicine;
+import com.gauravsngarg.healthbook.model.Patient;
+import com.gauravsngarg.healthbook.model.Prescription;
+import com.gauravsngarg.healthbook.model.Vaccine;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -23,6 +28,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        PrepareDB();
+
         if(mDatabase == null){
             Log.d(TAG, "database is null");
         }
@@ -65,11 +75,46 @@ public class MainActivity extends AppCompatActivity {
             final Button button = (Button) findViewById(R.id.addButton);
             button.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    /*Item item = new Item(text.getText().toString());
+                    Item item = new Item(text.getText().toString());
                     String id = mDatabase.push().getKey();
                     Log.d(TAG, " database start");
-                    mDatabase.child("users").child(mUserId).child("items").push().setValue(item);
-                    text.setText("");*/
+//                  mDatabase.child("users").child(mUserId).child("items").setValue(item);
+                    //       mDatabase.child("users").child(mUserId).child("items").push().setValue(PrepareDB());
+                    //**********************************
+                    //mDatabase.child("users").child(mUserId).child("items").push();
+                    //DatabaseReference ref = mDatabase.child("users").child(mUserId).child("items").getRef();
+
+
+                    List<Medicine> medicines = new ArrayList<>();
+                    medicines.add(new Medicine("Thyronorm", "Thyro","00", "00"));
+                    medicines.add(new Medicine("Crocin", "Paracetamol","00", "00"));
+
+                    mDatabase.child("users").child(mUserId).child("items").push().setValue(medicines);
+
+                    String id1 = mDatabase.child("users").child(mUserId).child("items").push().getKey();
+
+                    DatabaseReference ref = mDatabase.child("users").child(mUserId).child("items").child(id1).getRef();
+
+                    List<String> medicineId = new ArrayList<>();
+                    medicineId.add("0");
+                    medicineId.add("1");
+
+                    List<Prescription> prescriptions = new ArrayList<>();
+                    prescriptions.add(new Prescription("http://photo URL", "123", "31-12-1991",medicineId));
+                    prescriptions.add(new Prescription("http://photo URL", "123", "31-12-1991",medicineId));
+
+                    ref.setValue(prescriptions);
+
+                    /*mDatabase.child("users").child(mUserId).child("items").push().setValue(medicines);
+
+                    List<Vaccine> vaccines = new ArrayList<>();
+                    vaccines.add(new Vaccine("HPT"));
+
+                    Patient patient = new Patient(26, "O+", "31-12-1991","gaurav","12345");
+*/
+
+
+                    text.setText("");
 
                     Intent intent = new Intent(MainActivity.this, PatientDetails.class);
                     startActivity(intent);
@@ -131,6 +176,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public Patient PrepareDB() {
+        List<Medicine> medicines = new ArrayList<>();
+        medicines.add(new Medicine("Thyronorm", "Thyro","00", "00"));
+        medicines.add(new Medicine("Crocin", "Paracetamol","00", "00"));
+
+        List<String> medicineId = new ArrayList<>();
+        medicineId.add("0");
+        medicineId.add("1");
+
+        List<Prescription> prescriptions = new ArrayList<>();
+        prescriptions.add(new Prescription("http://photo URL", "123", "31-12-1991",medicineId));
+
+        List<Vaccine> vaccines = new ArrayList<>();
+        vaccines.add(new Vaccine("HPT"));
+
+        Patient patient = new Patient(26, "O+", "31-12-1991","gaurav","12345");
+
+        return patient;
     }
 
     private void loadLogInView() {

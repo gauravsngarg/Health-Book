@@ -5,13 +5,21 @@ import java.util.List;
 public class Patient {
     int age;
     String bloodGroup;
-    String disease;
+   // Medicine disease;
     String dob;
-    List<Medicine> medicines;
     String patientName;
     String phsID;
-    List<Prescription> prescriptions;
-    List<Vaccine> vaccines;
+
+    public Patient() {
+    }
+
+    public Patient(int age, String bloodGroup, String dob, String patientName, String phsID) {
+        this.age = age;
+        this.bloodGroup = bloodGroup;
+        this.dob = dob;
+        this.patientName = patientName;
+        this.phsID = phsID;
+    }
 
     public int getAge() {
         return age;
@@ -29,28 +37,12 @@ public class Patient {
         this.bloodGroup = bloodGroup;
     }
 
-    public String getDisease() {
-        return disease;
-    }
-
-    public void setDisease(String disease) {
-        this.disease = disease;
-    }
-
     public String getDob() {
         return dob;
     }
 
     public void setDob(String dob) {
         this.dob = dob;
-    }
-
-    public List<Medicine> getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(List<Medicine> medicines) {
-        this.medicines = medicines;
     }
 
     public String getPatientName() {
@@ -67,21 +59,5 @@ public class Patient {
 
     public void setPhsID(String phsID) {
         this.phsID = phsID;
-    }
-
-    public List<Prescription> getPrescriptions() {
-        return prescriptions;
-    }
-
-    public void setPrescriptions(List<Prescription> prescriptions) {
-        this.prescriptions = prescriptions;
-    }
-
-    public List<Vaccine> getVaccines() {
-        return vaccines;
-    }
-
-    public void setVaccines(List<Vaccine> vaccines) {
-        this.vaccines = vaccines;
     }
 }

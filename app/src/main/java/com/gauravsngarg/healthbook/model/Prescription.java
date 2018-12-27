@@ -2,11 +2,21 @@ package com.gauravsngarg.healthbook.model;
 
 import java.util.List;
 
-class Prescription {
+public class Prescription {
     String url;
-    String doctorName;
+    String doctorId;
     String date;
-    List<Medicine> prescMedicines;
+    List<String> medicineID;
+
+    public Prescription() {
+    }
+
+    public Prescription(String url, String doctorId, String date, List<String> medicineID) {
+        this.url = url;
+        this.doctorId = doctorId;
+        this.date = date;
+        this.medicineID = medicineID;
+    }
 
     public String getUrl() {
         return url;
@@ -16,12 +26,12 @@ class Prescription {
         this.url = url;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
     }
 
     public String getDate() {
@@ -32,11 +42,11 @@ class Prescription {
         this.date = date;
     }
 
-    public List<Medicine> getPrescMedicines() {
-        return prescMedicines;
+    public List<String> getMedicineID() {
+        return medicineID;
     }
 
-    public void setPrescMedicines(List<Medicine> prescMedicines) {
-        this.prescMedicines = prescMedicines;
+    public void setMedicineID(List<String> medicineID) {
+        this.medicineID = medicineID;
     }
 }

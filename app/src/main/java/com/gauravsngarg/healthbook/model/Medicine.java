@@ -10,12 +10,19 @@ public class Medicine {
 
     }
 
-    public Medicine(String name, String salt) {
+    public Medicine(String mName, String mSalt, String mStartDate, String mEndDate) {
+        this.mName = mName;
+        this.mSalt = mSalt;
+        this.mStartDate = mStartDate;
+        this.mEndDate = mEndDate;
+    }
+
+   /* public Medicine(String name, String salt) {
         mName = name;
         mSalt = salt;
         mStartDate = "null";
         mEndDate = "null";
-    }
+    }*/
 
     public String getName() {
         return mName;

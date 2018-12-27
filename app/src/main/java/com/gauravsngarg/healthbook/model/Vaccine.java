@@ -1,7 +1,14 @@
 package com.gauravsngarg.healthbook.model;
 
-class Vaccine {
+public class Vaccine {
     String vName;
+
+    public Vaccine() {
+    }
+
+    public Vaccine(String vName) {
+        this.vName = vName;
+    }
 
     public String getvName() {
         return vName;
