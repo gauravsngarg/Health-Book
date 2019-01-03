@@ -37,5 +37,6 @@
     <string name="default_gender">Female</string>
     <string name="default_bg">O+</string>
     <string name="blood_group">Blood Group</string>
-    <string name="patient_details">Patient Details</string>
+    <string name="sample_doctor">V. K. Gupta</string>
+    <string name="visited_on">Visited On</string>
 </resources>

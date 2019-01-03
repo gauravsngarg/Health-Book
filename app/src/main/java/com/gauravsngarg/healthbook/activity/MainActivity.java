@@ -1,8 +1,10 @@
 package com.gauravsngarg.healthbook.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -78,18 +80,23 @@ public class MainActivity extends AppCompatActivity {
                     Item item = new Item(text.getText().toString());
                     String id = mDatabase.push().getKey();
                     Log.d(TAG, " database start");
-//                  mDatabase.child("users").child(mUserId).child("items").setValue(item);
-                    //       mDatabase.child("users").child(mUserId).child("items").push().setValue(PrepareDB());
-                    //**********************************
-                    //mDatabase.child("users").child(mUserId).child("items").push();
-                    //DatabaseReference ref = mDatabase.child("users").child(mUserId).child("items").getRef();
+
+                    Patient patient1 = new Patient(26, "O+","31-12-1991","Gaurav", "12345");
+                    mDatabase.child("users").child(mUserId).setValue(patient1);
+
+                    List<String> medicineIDs = new ArrayList<>();
+                    medicineIDs.add("1");
+                    medicineIDs.add("2");
+                    Prescription presc1 = new Prescription("http:presc1.com","1234","01-01-2019",medicineIDs);
+                    mDatabase.child("users").child(mUserId).setValue(presc1);
 
 
                     List<Medicine> medicines = new ArrayList<>();
                     medicines.add(new Medicine("Thyronorm", "Thyro","00", "00"));
                     medicines.add(new Medicine("Crocin", "Paracetamol","00", "00"));
 
-                    mDatabase.child("users").child(mUserId).child("items").push().setValue(medicines);
+                    //To Push medicines in DB
+                   //** mDatabase.child("users").child(mUserId).child("items").push().setValue(medicines);
 
                     String id1 = mDatabase.child("users").child(mUserId).child("items").push().getKey();
 
@@ -103,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
                     prescriptions.add(new Prescription("http://photo URL", "123", "31-12-1991",medicineId));
                     prescriptions.add(new Prescription("http://photo URL", "123", "31-12-1991",medicineId));
 
-                    ref.setValue(prescriptions);
+                    //To push prescription in Database
+                  //**  ref.setValue(prescriptions);
 
                     /*mDatabase.child("users").child(mUserId).child("items").push().setValue(medicines);
 

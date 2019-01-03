@@ -8,6 +8,7 @@ public class Prescription {
     String date;
     List<String> medicineID;
 
+
     public Prescription() {
     }
 

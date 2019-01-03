@@ -7,29 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.PatientDetails">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/basic_patient_detail"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <include layout="@layout/basic_patient_detail"
+        android:visibility="gone"/>
 
-    <include
-        layout="@layout/first_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include"/>
+    <include layout="@layout/first_card"
+        android:visibility="gone"/>
+
+    <include layout="@layout/second_card"/>
 
     <TextView
         android:id="@+id/tv_patientDetails"
@@ -39,9 +23,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="@string/patient_details"
+        android:contentDescription="Patient Details"
         android:minHeight="20dp"
-        android:text="@string/patient_details"
+        android:text="patient details"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
