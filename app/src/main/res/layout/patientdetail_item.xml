@@ -7,13 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".activity.PatientDetails">
 
-    <include layout="@layout/basic_patient_detail"
-        android:visibility="gone"/>
+    <include
+        android:id="@+id/basic_patient_detail_container"
+        layout="@layout/basic_patient_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <include layout="@layout/first_card"
-        android:visibility="gone"/>
+    <include
+        android:id="@+id/first_card_container"
+        layout="@layout/first_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/basic_patient_detail_container"/>
 
-    <include layout="@layout/second_card"/>
+    <include
+        android:id="@+id/second_card_container"
+        layout="@layout/second_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_card_container"/>
 
     <TextView
         android:id="@+id/tv_patientDetails"
