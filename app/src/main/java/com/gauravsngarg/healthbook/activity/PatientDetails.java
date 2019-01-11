@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.gauravsngarg.healthbook.R;
 import com.gauravsngarg.healthbook.model.Patient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -20,10 +22,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class PatientDetails extends AppCompatActivity {
 
-    private static final String TAG = "TAG";
+    private static final String TAG = "TAG GAURAV";
 
 
     private TextView mAge;
@@ -37,6 +42,8 @@ public class PatientDetails extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+    private DocumentReference ref;
+    private FirebaseFirestore db;
     private DatabaseReference mDatabase;
     private String mUserId;
     private Patient mPatient;
@@ -62,6 +69,7 @@ public class PatientDetails extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        db = FirebaseFirestore.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
@@ -75,11 +83,30 @@ public class PatientDetails extends AppCompatActivity {
         } else {
             //Retrieve Patient Details and Show in Activity
             mUserId = mFirebaseUser.getUid();
-            userdetails = mDatabase.child("users1");
+            //userdetails = mDatabase.child("users1");
             mPatient = new Patient(26, "O+","31-12-1991","Gaurav", "12345");
-            mDatabase.child("user3").child(mUserId).setValue(mPatient);
+            Toast.makeText(PatientDetails.this, "Start 1", Toast.LENGTH_SHORT).show();
 
-            attachDatabaseReadListener();
+            ref = db.collection("users").document("username");
+            ref.get().addOnCompleteListener((new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if(task.isSuccessful()){
+                        DocumentSnapshot doc = task.getResult();
+                        Toast.makeText(PatientDetails.this, "Start 2", Toast.LENGTH_SHORT).show();
+                        if(doc.exists()){
+                            Log.d(TAG, "DocumentSnapshot data: " + doc.getData());
+                        } else {
+                            Log.d(TAG, "No such document");
+                        }
+                    }
+                }
+            }));
+           // ref.collection("userdetails");
+
+            //mDatabase.child("user3").child(mUserId).setValue(mPatient);
+
+          //  attachDatabaseReadListener();
 
         }
     }
